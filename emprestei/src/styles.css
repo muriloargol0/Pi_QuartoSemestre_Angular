@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
 
-.form-group .input-validated{
-    border: 2px solid red;
+.form-group .input-validated {
+  border: 2px solid red;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.btn-primary-emprestei {
+  color: #fff;
+  background-color: #028e9b;
+}
+
+.btn-secondary-emprestei {
+  color: #fff;
+  background-color: #86d300;
+}
+
+.btn-primary-emprestei:hover {
+  color: #fff;
+  background-color: #037a85;
+}
+
+.default-link a {
+  color: #00a5b4;
 }
