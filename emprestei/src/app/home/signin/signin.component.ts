@@ -1,48 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
-@Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+@Component ({
+    templateUrl: './signin.component.html'
 })
-export class SigninComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
-  loginForm: FormGroup;
-  private _loginError: boolean = false;
+    loginForm: FormGroup;
+    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
 
-  
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-  }
-
-  hasError(errorCode: string, formControlName: string){
-    return (this.loginForm.get(formControlName).hasError(errorCode) && this.loginForm.get(formControlName).touched)
-  }
-
-  public set loginError(value: boolean){
-    this._loginError = value;
-  }
-
-  public get loginError(): boolean{
-    return this._loginError;
-  }
-
-  doLogin(){   
-    this.loginError = false;
-
-    if(this.loginForm.get('userName').value != 'adm' || this.loginForm.get('password').value != '123'){
-      console.log('login errado');
-      this.loginError = true;
+    constructor(
+        private formBuilder: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
+        private platformDetectorService: PlatformDetectorService) { }
+    
+    ngOnInit(): void {
+        this.loginForm = this.formBuilder.group({
+            userName: ['', Validators.required],
+            password: ['', Validators.required]
+        });
     }
 
-    console.log(this.loginError);
-  }
+    login() {
+        
+        const userName = this.loginForm.get('userName').value;
+        const password = this.loginForm.get('password').value;
 
-}
+        this.authService
+        .authenticate(userName, password)
+        .subscribe(
+            () => this.router.navigate(['user', userName]),
+            err => {
+                console.log(err);
+                this.loginForm.reset();
+                this.platformDetectorService.isPlatformBrowser() &&
+                    this.userNameInput.nativeElement.focus();
+                alert('Invalid user name or password');
+        })
+    }
+ }
