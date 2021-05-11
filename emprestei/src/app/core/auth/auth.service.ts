@@ -5,7 +5,7 @@ import { UserService } from '../user/user.service';
 import { tap } from 'rxjs/operators'
 
 
-const API_URL = 'https://localhost:3000';
+const API_URL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,7 @@ export class AuthService {
           {userName, password},
           {observe: 'response'})
         .pipe(tap(res => {
+          console.log(res);
           const authToken = res.headers.get('x-access-token');
           this.userService.setToken(authToken);
           console.log(`User ${userName} authenticated with token ${authToken}`);
