@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { dateValidator } from 'src/app/shared/validators/date.validator';
 import { NewUser } from './new-user';
 import { SignUpService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
@@ -21,20 +22,20 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      email: ['', 
+      acc_email: ['', 
         [
           Validators.required,
           Validators.email
         ]
       ],
-      fullName: ['', 
+      acc_name: ['', 
         [
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(40)
         ]
       ],
-      userName: ['', 
+      acc_username: ['', 
         [
           Validators.required,
           Validators.minLength(2),
@@ -42,11 +43,17 @@ export class SignUpComponent implements OnInit {
         ],
         this.userNotTakenValidatorService.checkUserNameTaken()
       ],
-      password: ['', 
+      acc_password: ['', 
         [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(14)
+        ]
+      ],
+      acc_dt_birthday: ['', 
+        [
+          Validators.required,
+          dateValidator,
         ]
       ]
     });
@@ -54,12 +61,25 @@ export class SignUpComponent implements OnInit {
 
   signup() {
     const newUser = this.signUpForm.getRawValue() as NewUser;
+    console.table(newUser);
+    newUser.stts_id = 1;
+    newUser.acc_password_was_reset = false;
+    newUser.acc_dt_birthday = new Date(this.formataStringData(newUser.acc_dt_birthday));
     this.signUpService
       .signup(newUser)
       .subscribe(
         () => this.router.navigate(['']),
         err => console.log(err)
       );
+  }
+
+  formataStringData(data) {
+    var dia  = data.split("/")[0];
+    var mes  = data.split("/")[1];
+    var ano  = data.split("/")[2];
+  
+    return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
+    // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
   }
 
 }

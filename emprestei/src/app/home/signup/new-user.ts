@@ -1,6 +1,9 @@
 export interface NewUser {
-    userName: string,
-    email: string,
-    fullName: string,
-    password: string
+    acc_username: string,
+    acc_dt_birthday: Date,
+    acc_email: string,
+    acc_name: string,
+    acc_password: string,
+    acc_password_was_reset: boolean
+    stts_id: number
 }
