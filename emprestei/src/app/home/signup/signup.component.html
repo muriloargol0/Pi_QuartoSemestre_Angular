@@ -81,5 +81,7 @@
 
     <button [disabled]="signUpForm.invalid || signUpForm.pending" class="btn btn-primary btn-block">Register</button>
 
+    <button class="btn btn-primary btn-block" (click)="loadUser()">Preencher</button>
+
     <p>Já é usuário? <a [routerLink]="['']">Entre agora!</a></p>
 </form>

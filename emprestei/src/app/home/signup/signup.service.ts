@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NewUser } from './new-user';
 
@@ -16,6 +16,16 @@ export class SignUpService {
     }
 
     signup(newUser: NewUser) {
-        return this.http.post(API_URL + '/account', newUser);
+        // var opts = new HttpHeaders({
+        //     'Content-Type': 'application/json',
+        //     'Access-Control-Allow-Origin':'*'
+        // });
+        // console.log('opts:')
+        // console.log(opts);
+        return this.http.post<NewUser>(API_URL + '/account/', newUser);
+    }
+
+    loadUser() {
+        return this.http.get<NewUser>(`${API_URL}/account/6`);
     }
 }

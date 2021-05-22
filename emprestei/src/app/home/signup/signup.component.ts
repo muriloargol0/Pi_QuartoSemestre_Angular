@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
           Validators.minLength(2),
           Validators.maxLength(30)
         ],
-        this.userNotTakenValidatorService.checkUserNameTaken()
+        //this.userNotTakenValidatorService.checkUserNameTaken()
       ],
       acc_password: ['', 
         [
@@ -59,16 +59,29 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  loadUser() {
+    this.signUpService.loadUser().subscribe(res => {
+      this.signUpForm.get('acc_email').patchValue(res.acc_email);
+      this.signUpForm.get('acc_name').patchValue(res.acc_name);
+      this.signUpForm.get('acc_username').patchValue(res.acc_username);
+      this.signUpForm.get('acc_password').patchValue(res.acc_password);
+      this.signUpForm.get('acc_dt_birthday').patchValue(res.acc_dt_birthday);
+    }, err => console.log(err));
+  }
+
   signup() {
     const newUser = this.signUpForm.getRawValue() as NewUser;
-    console.table(newUser);
     newUser.stts_id = 1;
     newUser.acc_password_was_reset = false;
-    newUser.acc_dt_birthday = new Date(this.formataStringData(newUser.acc_dt_birthday));
+    newUser.acc_dt_birthday = this.formataStringData(newUser.acc_dt_birthday);
+    console.table(newUser)
     this.signUpService
       .signup(newUser)
       .subscribe(
-        () => this.router.navigate(['']),
+        res => {
+          console.log(res); 
+          this.router.navigate(['']);
+         },
         err => console.log(err)
       );
   }
