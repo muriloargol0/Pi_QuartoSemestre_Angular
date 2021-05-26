@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit {
         this.authService
         .authenticate(userName, password)
         .subscribe(
-            (account) => this.router.navigate(['account', account.id]),
+            (account) => this.router.navigate([`../loan/user=${account.id}`]),
             err => {
                 console.log(err);
                 this.loginForm.reset();

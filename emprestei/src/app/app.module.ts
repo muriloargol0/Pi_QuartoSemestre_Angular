@@ -4,20 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
-import { LoanComponent } from './loans/loan/loan.component';
-import { LoanListComponent } from './loans/loan-list/loan-list.component';
-import { LoadButtonComponent } from './loans/loan-list/load-button/load-button.component';
-import { LoansComponent } from './loans/loan-list/loans/loans.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { LoanListComponent } from './loan/loan-list/loan-list.component';
+import { LoanEditComponent } from './loan/loan-edit/loan-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoanComponent,
+    NotFoundComponent,
     LoanListComponent,
-    LoadButtonComponent,
-    LoansComponent,
-    NotFoundComponent
+    LoanEditComponent,
   ],
   imports: [
     BrowserModule,

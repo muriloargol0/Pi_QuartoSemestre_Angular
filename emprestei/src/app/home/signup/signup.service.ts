@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { NewUser } from './new-user';
 
-const API_URL = "http://localhost:8000"
-const API_ALURA = "http://localhost:3000"
+const API_URL = "http://localhost:8000";
 
 @Injectable({ providedIn: 'root'})
 export class SignUpService {
