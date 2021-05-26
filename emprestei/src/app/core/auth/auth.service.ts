@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { UserService } from '../user/user.service';
-import { tap } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
+import { Account } from 'src/app/home/signin/account';
 
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://localhost:8000';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +18,11 @@ export class AuthService {
     private http: HttpClient, 
     private userService: UserService) { }
 
-    authenticate(userName: string, password: string) {
+    authenticate(userName: string, password: string): Observable<Account> {
 
       return this.http
-        .post(API_URL + '/user/login',
-          {userName, password},
-          {observe: 'response'})
-        .pipe(tap(res => {
-          console.log(res);
-          const authToken = res.headers.get('x-access-token');
-          this.userService.setToken(authToken);
-          console.log(`User ${userName} authenticated with token ${authToken}`);
-        }))
+        .get<Account[]>(API_URL + '/account/')
+        .pipe(map(users => users.find(u => u.acc_username === userName && 
+          u.acc_password === password)));
     }
 }

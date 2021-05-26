@@ -8,6 +8,7 @@ import { LoanComponent } from './loans/loan/loan.component';
 import { LoanListComponent } from './loans/loan-list/loan-list.component';
 import { LoadButtonComponent } from './loans/loan-list/load-button/load-button.component';
 import { LoansComponent } from './loans/loan-list/loans/loans.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoansComponent } from './loans/loan-list/loans/loans.component';
     LoanComponent,
     LoanListComponent,
     LoadButtonComponent,
-    LoansComponent
+    LoansComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

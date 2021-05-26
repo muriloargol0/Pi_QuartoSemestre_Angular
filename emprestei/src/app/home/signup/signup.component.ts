@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { dateValidator } from 'src/app/shared/validators/date.validator';
+import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
 import { NewUser } from './new-user';
 import { SignUpService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
@@ -38,10 +39,11 @@ export class SignUpComponent implements OnInit {
       acc_username: ['', 
         [
           Validators.required,
+          lowerCaseValidator,
           Validators.minLength(2),
           Validators.maxLength(30)
         ],
-        //this.userNotTakenValidatorService.checkUserNameTaken()
+        this.userNotTakenValidatorService.checkUserNameTaken()
       ],
       acc_password: ['', 
         [

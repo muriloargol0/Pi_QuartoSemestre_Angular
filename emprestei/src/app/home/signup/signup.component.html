@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <input formControlName="acc_dt_birthday" placeholder="Data de nascimento" class="form-control">
+        <input formControlName="acc_dt_birthday" placeholder="Data de nascimento - Ex: 02/07/2001" class="form-control">
         <app-vmessage 
             *ngIf="signUpForm.get('acc_dt_birthday').errors?.required"
             text="Data de nascimento é requerida!">
@@ -49,6 +49,10 @@
             text="Nome de usuário é requerido!">
         </app-vmessage>
         <app-vmessage 
+            *ngIf="signUpForm.get('acc_username').errors?.lowerCase"
+            text="Nome de usuário deve ser em letras minúsculas">
+        </app-vmessage>
+        <app-vmessage 
             *ngIf="signUpForm.get('acc_username').errors?.minlength"
             text="Tamanho minímo 2 caracteres">
         </app-vmessage>
@@ -60,7 +64,7 @@
             text="Nome de usuário já existe!"
             *ngIf="signUpForm.get('acc_username').errors?.userNameTaken">
         </app-vmessage>
-        <small *ngIf="signUpForm.get('acc_username').valid" class="text-success">User available</small>
+        <small *ngIf="signUpForm.get('acc_username').valid" class="text-success">Usuário disponível</small>
     </div>
 
     <div class="form-group">

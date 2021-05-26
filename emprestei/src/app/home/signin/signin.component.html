@@ -1,4 +1,4 @@
-<h4 class="text-center">Login</h4>
+<h4 class="text-center">Entre!</h4>
 
 <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
@@ -10,7 +10,7 @@
             autofocus>
         <app-vmessage 
             *ngIf="loginForm.get('userName').errors?.required"
-            text="User name is required!">
+            text="Nome de usuário é necessário!">
         </app-vmessage> 
     </div>
 
@@ -22,7 +22,7 @@
             placeholder="Senha">
         <app-vmessage 
             *ngIf="loginForm.get('password').errors?.required"
-            text="Password is required!">
+            text="Senha é necessária!">
         </app-vmessage>
     </div>
 

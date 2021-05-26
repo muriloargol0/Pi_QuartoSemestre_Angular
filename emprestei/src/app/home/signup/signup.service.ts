@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { NewUser } from './new-user';
 
 const API_URL = "http://localhost:8000"
@@ -12,20 +13,14 @@ export class SignUpService {
 
     checkUserNameTaken(userName: string) {
 
-        return this.http.get(API_ALURA + '/user/exists/' + userName);
+        return this.http.get<NewUser[]>(API_URL + '/account/').pipe(map(response => response.find(account => account.acc_username == userName)));
     }
 
     signup(newUser: NewUser) {
-        // var opts = new HttpHeaders({
-        //     'Content-Type': 'application/json',
-        //     'Access-Control-Allow-Origin':'*'
-        // });
-        // console.log('opts:')
-        // console.log(opts);
         return this.http.post<NewUser>(API_URL + '/account/', newUser);
     }
 
     loadUser() {
-        return this.http.get<NewUser>(`${API_URL}/account/6`);
+        return this.http.get<NewUser>(`${API_URL}/account/3`);
     }
 }

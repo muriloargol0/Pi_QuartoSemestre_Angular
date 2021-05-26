@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-load-button',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadButtonComponent implements OnInit {
 
+  @Input() hasMore: boolean = true;
+  
   constructor() { }
 
   ngOnInit(): void {

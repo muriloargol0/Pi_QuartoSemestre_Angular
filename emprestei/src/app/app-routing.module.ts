@@ -5,6 +5,9 @@ import { SignInComponent } from './home/signin/signin.component';
 import { SignUpComponent } from './home/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './core/auth/auth.guard';
+import { LoanListComponent } from './loans/loan-list/loan-list.component';
+import { LoanListResolver } from './loans/loan-list/loan-list.resolver';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -23,12 +26,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
-    component: SignInComponent
+    path: 'account/:id',
+    component: LoanListComponent,
+    resolve: {
+      loans: LoanListResolver
+    }
   },
   {
-    path: 'signup',
-    component: SignUpComponent
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

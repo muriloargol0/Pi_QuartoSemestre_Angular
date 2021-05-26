@@ -34,13 +34,13 @@ export class SignInComponent implements OnInit {
         this.authService
         .authenticate(userName, password)
         .subscribe(
-            () => this.router.navigate(['user', userName]),
+            (account) => this.router.navigate(['account', account.id]),
             err => {
                 console.log(err);
                 this.loginForm.reset();
                 this.platformDetectorService.isPlatformBrowser() &&
                     this.userNameInput.nativeElement.focus();
-                alert('Invalid user name or password');
+                alert('Conta ou senha inválidas!');
         })
     }
  }
