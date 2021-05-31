@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NewUser } from './new-user';
 
 const API_URL = "http://localhost:8000";
@@ -15,7 +15,7 @@ export class SignUpService {
         return this.http.get<NewUser[]>(API_URL + '/account/').pipe(map(response => response.find(account => account.acc_username == userName)));
     }
 
-    signup(newUser: NewUser) {
+    signUp(newUser: NewUser) {
         return this.http.post<NewUser>(API_URL + '/account/', newUser);
     }
 

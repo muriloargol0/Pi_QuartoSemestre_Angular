@@ -1,4 +1,3 @@
-import { VMessageComponent } from './../../shared/components/vmessage/vmessage.component';
 import { AuthService } from './../../core/auth/auth.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

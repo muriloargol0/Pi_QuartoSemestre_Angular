@@ -1,1 +1,54 @@
-<p>loan-edit works!</p>
+<li class="list-group-item" *ngFor="">
+    <form [formGroup]="loanForm" class="form mt-4">
+        <div class="form-row">
+                <div class="form-group" col-md-8>
+                    <label for="description">Descrição:</label>
+                    <input #loanInput 
+                    formControlName="loan_description" 
+                    class="form-control" 
+                    value="{{item.loan_description}}" 
+                    >  
+                </div>
+                <div class="form-group" col-md-2>
+                    <label for="loanDate">Data do empréstimo:</label>
+                    <input 
+                    formControlName="loan_date" 
+                    class="form-control" 
+                    value="{{formatStringDataToDisplay(item.loan_date)}}" 
+                    >  
+                </div>
+                <div class="form-group" col-md-2>
+                    <label for="loanReturnDate">Data de devolução:</label>
+                    <input 
+                    formControlName="loan_return_date" 
+                    class="form-control" 
+                    value="{{formatStringDataToDisplay(item.loan_return_date)}}" 
+                    >  
+                </div>
+        </div>
+            <div class="form-group">
+                <label for="loanToName">Emprestou para:</label>
+                <input 
+                formControlName="loan_to_name" 
+                class="form-control" 
+                value="{{item.loan_to_name}}" 
+                >  
+            </div>
+            <div class="form-group">
+                <label for="observation">Observação:</label>
+                <textarea 
+                rows="3"
+                class="form-control" 
+                value="{{item.loan_observation}}" 
+                ></textarea>  
+            </div>
+            <div class="form-group">
+                <label for="loanEstimatedValue">Valor estimado do empréstimo:</label>
+                <input 
+                formControlName="loan_estimated_value" 
+                class="form-control" 
+                value="{{item.loan_estimated_value}}" 
+                >  
+            </div>
+    </form>
+</li>

@@ -11,7 +11,11 @@ export class LoanService {
   constructor(private http: HttpClient) { }
 
   loadLoansByUser(idUser: number) {
-      return this.http.get<Loan[]>(API_URL + `/loan/?user=${idUser}`);
+      return this.http.get<Loan[]>(API_URL + `/loan/?${idUser}`);
+  }
+
+  loadLoan(idUser: number, idLoan: number) {
+    return this.http.get<Loan[]>(API_URL + `/loan/?${idUser}/?${idLoan}`);
   }
   
 }

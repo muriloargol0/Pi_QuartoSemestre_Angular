@@ -1,9 +1,22 @@
-<p>loan-list works!</p>
+<p class="text-center text-muted" *ngIf="!loansList.length">
+    <font size="40" >
+        Desculpe, ainda não há empréstimos cadastrados para esse usuário
+    </font>
+</p>
 
+<li class="list-group-item mb-1" *ngFor="let item of loansList">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-4">Item: {{item.loan_description}}</h5>
+                <small>Data do empréstimo: {{formatStringDataToDisplay(item.loan_date)}}</small>
+                <small>Data de retorno: {{formatStringDataToDisplay(item.loan_return_date)}}</small>
+            </div>
+            <p class="mb-1">Emprestado para: {{item.loan_to_name}}</p>
+            <p class="mb-1">Observação: {{item.loan_observation}}</p>
+            <small>Valor Estimado: R$ {{item.loan_estimated_value}}</small>
+        </a>
+    </div>  
+</li>
 
-    <ul>
-        <li *ngFor="let item of loansList">
-             {{ item.loan_description }}
-        </li>
-    </ul>
 

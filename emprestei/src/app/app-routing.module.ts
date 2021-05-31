@@ -6,6 +6,7 @@ import { SignUpComponent } from './home/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { LoanEditComponent} from './loan/loan-edit/loan-edit.component';
 
 const routes: Routes = [
   {
@@ -23,9 +24,13 @@ const routes: Routes = [
       },
     ]
   },
-    {
+  {
     path: 'loan/:user',
     component: LoanListComponent
+  },
+  {
+    path: 'loan/:user/edit',
+    component: LoanEditComponent
   },
   {
     path: '**',

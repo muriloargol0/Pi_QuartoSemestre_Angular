@@ -78,7 +78,7 @@ export class SignUpComponent implements OnInit {
     newUser.acc_dt_birthday = this.formataStringData(newUser.acc_dt_birthday);
     console.table(newUser)
     this.signUpService
-      .signup(newUser)
+      .signUp(newUser)
       .subscribe(
         res => {
           console.log(res); 

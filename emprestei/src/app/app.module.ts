@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LoanListComponent } from './loan/loan-list/loan-list.component';
 import { LoanEditComponent } from './loan/loan-edit/loan-edit.component';
+import { EditButtonComponent } from './loan/loan-list/edit-button/edit-button.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { LoanEditComponent } from './loan/loan-edit/loan-edit.component';
     NotFoundComponent,
     LoanListComponent,
     LoanEditComponent,
+    EditButtonComponent,
   ],
   imports: [
     BrowserModule,

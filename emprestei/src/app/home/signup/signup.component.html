@@ -1,4 +1,4 @@
-<h4 class="text-center"> Cadastre-se!</h4>
+<h4 class="text-center mt-4"> Cadastre-se!</h4>
 
 <form [formGroup]="signUpForm" class="form mt-4" (submit)="signup()">
     <div class="form-group">
@@ -83,7 +83,7 @@
         </app-vmessage>
     </div>
 
-    <button [disabled]="signUpForm.invalid || signUpForm.pending" class="btn btn-primary btn-block">Register</button>
+    <button [disabled]="signUpForm.invalid || signUpForm.pending" class="btn btn-primary btn-block">Registre-se</button>
 
     <button class="btn btn-primary btn-block" (click)="loadUser()">Preencher</button>
 

@@ -1,5 +1,5 @@
 <header class="fixed-top">
-    <nav class="navbar navbar-light bg-white">
+    <nav class="navbar navbar-light" style="background-color: #03989e;">
         <a class="navbar-brand">EMPRESTEI</a>
 
         <div *ngIf="(user$ | async) as user; else login">
@@ -10,6 +10,7 @@
 
         <ng-template #login>
             <span class="navbar-text">
+                <img class="img-fluid mr-2" src="/assets/img/enter.png">
                 <a [routerLink]="['']">Faça login!</a>
             </span>
         </ng-template>
