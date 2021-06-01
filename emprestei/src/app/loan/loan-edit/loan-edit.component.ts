@@ -60,11 +60,11 @@ export class LoanEditComponent implements OnInit {
       ],
     })
 
-    this.loanService.loadLoan(this.idUser, this.idLoan).subscribe(res => {
-      this.loan = res
-    }, err => {
-      alert('Erro ao carregar o empréstimo!');
-    });
+    //  this.loanService.loadLoan(this.idUser, this.idLoan).subscribe(res => {
+    //    this.loan = res
+    //  }, err => {
+    //    alert('Erro ao carregar o empréstimo!');
+    //  });
 
   }
 

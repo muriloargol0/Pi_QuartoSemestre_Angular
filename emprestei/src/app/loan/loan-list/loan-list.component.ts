@@ -16,6 +16,7 @@ export class LoanListComponent implements OnInit {
 
   private idUser: number = 0;
   public loansList: Loan[];
+  private loan: Loan[];
 
   constructor( 
     private formBuilder: FormBuilder, 
@@ -30,6 +31,17 @@ export class LoanListComponent implements OnInit {
     }, err => {
       alert('Erro ao carregar os empréstimos!');
     });
+  }
+
+  loadLoan(idLoan: number) {
+
+    this.loanService.loadLoan(idLoan).subscribe(res => {
+      this.loan = res
+    }, err => {
+      alert('Erro ao carregar o empréstimo!');
+    });
+    
+    return console.log(this.loan);
   }
 
   formatStringDataToDisplay(data) {

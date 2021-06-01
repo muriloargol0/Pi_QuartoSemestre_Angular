@@ -6,7 +6,7 @@
 
 <li class="list-group-item mb-1" *ngFor="let item of loansList">
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a class="list-group-item list-group-item-action flex-column align-items-start" (click)="loadLoan(item.id)">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-4">Item: {{item.loan_description}}</h5>
                 <small>Data do empréstimo: {{formatStringDataToDisplay(item.loan_date)}}</small>
@@ -15,6 +15,7 @@
             <p class="mb-1">Emprestado para: {{item.loan_to_name}}</p>
             <p class="mb-1">Observação: {{item.loan_observation}}</p>
             <small>Valor Estimado: R$ {{item.loan_estimated_value}}</small>
+
         </a>
     </div>  
 </li>

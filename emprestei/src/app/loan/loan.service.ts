@@ -14,8 +14,8 @@ export class LoanService {
       return this.http.get<Loan[]>(API_URL + `/loan/?${idUser}`);
   }
 
-  loadLoan(idUser: number, idLoan: number) {
-    return this.http.get<Loan[]>(API_URL + `/loan/?${idUser}/?${idLoan}`);
+  loadLoan(idLoan: number) {
+    return this.http.get<Loan[]>(API_URL + `/loan/?loan=${idLoan}`);
   }
   
 }
