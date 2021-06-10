@@ -8,6 +8,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LoanListComponent } from './loan/loan-list/loan-list.component';
 import { LoanEditComponent } from './loan/loan-edit/loan-edit.component';
 import { EditButtonComponent } from './loan/loan-list/edit-button/edit-button.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { EditButtonComponent } from './loan/loan-list/edit-button/edit-button.co
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

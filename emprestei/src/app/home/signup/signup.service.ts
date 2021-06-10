@@ -20,6 +20,6 @@ export class SignUpService {
     }
 
     loadUser() {
-        return this.http.get<NewUser>(`${API_URL}/account/3`);
+        return this.http.get<NewUser>(`${API_URL}/account/1`);
     }
 }

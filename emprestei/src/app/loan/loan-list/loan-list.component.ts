@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoanService } from '../loan.service';
 import { Loan } from '../loan';
@@ -20,7 +20,8 @@ export class LoanListComponent implements OnInit {
 
   constructor( 
     private formBuilder: FormBuilder, 
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private router: Router, 
     private loanService: LoanService) {
     this.route.params.subscribe(params => this.idUser = params['user']);
   }
@@ -33,15 +34,8 @@ export class LoanListComponent implements OnInit {
     });
   }
 
-  loadLoan(idLoan: number) {
-
-    this.loanService.loadLoan(idLoan).subscribe(res => {
-      this.loan = res
-    }, err => {
-      alert('Erro ao carregar o empréstimo!');
-    });
-    
-    return console.log(this.loan);
+  loanDetails(idLoan: number): void {
+    this.router.navigate([`../loan/edit/${idLoan}`]);
   }
 
   formatStringDataToDisplay(data) {

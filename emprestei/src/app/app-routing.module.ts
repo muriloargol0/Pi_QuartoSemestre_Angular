@@ -12,7 +12,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -29,7 +28,7 @@ const routes: Routes = [
     component: LoanListComponent
   },
   {
-    path: 'loan/:user/edit',
+    path: 'loan/edit/:loan',
     component: LoanEditComponent
   },
   {
