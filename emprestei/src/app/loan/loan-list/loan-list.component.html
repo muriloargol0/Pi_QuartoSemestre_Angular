@@ -15,8 +15,11 @@
             <p class="mb-1">Emprestado para: {{item.loan_to_name}}</p>
             <p class="mb-1">Observação: {{item.loan_observation}}</p>
             <small>Valor Estimado: R$ {{item.loan_estimated_value}}</small>
-
         </a>
+        <button *ngIf="item.loan_return_date == null || item.loan_return_date == ''"
+             name="btnDevolver" class="btn btn-primary" (click)="returnLoan(item.id)">Devolver</button>
+        <button *ngIf="item.loan_return_date != null && item.loan_return_date != ''" 
+            name="btnDesfazerDevolucao" class="btn btn-primary" (click)="undoReturnLoan(item.id)">Desfazer Devolução</button>
     </div>  
 </li>
 

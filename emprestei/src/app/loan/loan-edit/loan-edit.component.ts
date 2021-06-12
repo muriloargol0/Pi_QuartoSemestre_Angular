@@ -83,12 +83,17 @@ export class LoanEditComponent implements OnInit {
   }
 
   formatStringDataToDisplay(data) {
-    var ano  = data.split("-")[0];
-    var mes  = data.split("-")[1];
-    var dia  = data.split("-")[2];
-  
-    return ("0"+dia).slice(-2) + '/' + ("0"+mes).slice(-2) + '/' + ano;
-    // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
+    var ano  = "";
+    var mes  = "";
+    var dia  = "";
+    if(data != null && data != ""){
+      ano = data.split("-")[0];
+      mes = data.split("-")[1];
+      dia = data.split("-")[2];
+
+      return ("0"+dia).slice(-2) + '/' + ("0"+mes).slice(-2) + '/' + ano;
+    }
+    return null;
   }
 
 }

@@ -17,5 +17,17 @@ export class LoanService {
   loadLoan(idLoan: number) {
     return this.http.get<Loan[]>(API_URL + `/loan/?loan=${idLoan}`);
   }
-  
+
+  returnLoan(loan: Loan) {
+    let formData: FormData = new FormData();
+    formData.append("acc_id", loan.acc_id.toString());
+    formData.append("loan_to_name", loan.loan_to_name);
+    formData.append("loan_description", loan.loan_description);
+    formData.append("loan_date", loan.loan_date.toString());
+    formData.append("loan_observation", loan.loan_observation);
+    formData.append("loan_return_date", loan.loan_return_date == null ? "" : loan.loan_return_date.toString());
+    formData.append("loan_estimated_value", loan.loan_estimated_value.toString());
+
+    return this.http.put<Loan>(API_URL + `/loan/${loan.id}/`, formData);
+  }  
 }

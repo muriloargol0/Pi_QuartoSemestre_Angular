@@ -5,6 +5,6 @@ export interface Loan{
     loan_to_name: string,
     loan_date: Date,
     loan_observation: string,
-    loan_return_date: Date,
+    loan_return_date: string,
     loan_estimated_value: number
 } 
