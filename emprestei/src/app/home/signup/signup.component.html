@@ -30,16 +30,11 @@
     </div>
 
     <div class="form-group">
-        <input formControlName="acc_dt_birthday" placeholder="Data de nascimento - Ex: 02/07/2001" class="form-control">
+        <input formControlName="acc_dt_birthday" placeholder="Data de nascimento - Ex: 02/07/2001" class="form-control" type="date">
         <app-vmessage 
             *ngIf="signUpForm.get('acc_dt_birthday').errors?.required"
             text="Data de nascimento é requerida!">
         </app-vmessage>
-        <app-vmessage 
-            *ngIf="signUpForm.get('acc_dt_birthday').errors?.date"
-            text="Insira uma data válida!">
-        </app-vmessage>
-
     </div>
 
     <div class="form-group">
@@ -84,8 +79,6 @@
     </div>
 
     <button [disabled]="signUpForm.invalid || signUpForm.pending" class="btn btn-primary btn-block">Registre-se</button>
-
-    <button class="btn btn-primary btn-block" (click)="loadUser()">Preencher</button>
-
+    
     <p>Já é usuário? <a [routerLink]="['']">Entre agora!</a></p>
 </form>

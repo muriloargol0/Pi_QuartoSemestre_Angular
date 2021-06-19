@@ -19,7 +19,7 @@ export class AuthService {
     private userService: UserService) { }
 
     authenticate(userName: string, password: string): Observable<Account> {
-
+      
       return this.http
         .get<Account[]>(API_URL + '/account/')
         .pipe(map(users => users.find(u => u.acc_username === userName && 

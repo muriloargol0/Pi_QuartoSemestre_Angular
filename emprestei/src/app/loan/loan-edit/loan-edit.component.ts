@@ -52,7 +52,6 @@ export class LoanEditComponent implements OnInit {
       ],
       loan_return_date: ['', 
         [
-          Validators.required
         ]
       ],
       loan_observation: ['', 
@@ -77,7 +76,7 @@ export class LoanEditComponent implements OnInit {
       res.forEach(item => {
         this.loanForm.get('loan_description').patchValue(item.loan_description);
         this.loanForm.get('loan_to_name').patchValue(item.loan_to_name);
-        this.loanForm.get('loan_date').patchValue(this.formatStringDataToDisplay(item.loan_date));
+        this.loanForm.get('loan_date').patchValue(item.loan_date);
         this.loanForm.get('loan_return_date').patchValue(this.formatStringDataToDisplay(item.loan_return_date));
         this.loanForm.get('loan_observation').patchValue(item.loan_observation);
         this.loanForm.get('loan_estimated_value').patchValue(item.loan_estimated_value);
@@ -96,7 +95,7 @@ export class LoanEditComponent implements OnInit {
     let loan: Loan = new Loan();
 
     loan.acc_id = this.idUserRoute;
-    loan.loan_date = this.formatStringDataToSave(this.loanForm.get('loan_date').value);
+    loan.loan_date = this.loanForm.get('loan_date').value;
     loan.loan_description = this.loanForm.get('loan_description').value;
     loan.loan_estimated_value = this.loanForm.get('loan_estimated_value').value;
     loan.loan_observation = this.loanForm.get('loan_observation').value;

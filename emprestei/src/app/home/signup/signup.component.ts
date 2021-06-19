@@ -55,27 +55,16 @@ export class SignUpComponent implements OnInit {
       acc_dt_birthday: ['', 
         [
           Validators.required,
-          dateValidator,
         ]
       ]
     });
-  }
-
-  loadUser() {
-    this.signUpService.loadUser().subscribe(res => {
-      this.signUpForm.get('acc_email').patchValue(res.acc_email);
-      this.signUpForm.get('acc_name').patchValue(res.acc_name);
-      this.signUpForm.get('acc_username').patchValue(res.acc_username);
-      this.signUpForm.get('acc_password').patchValue(res.acc_password);
-      this.signUpForm.get('acc_dt_birthday').patchValue(res.acc_dt_birthday);
-    }, err => console.log(err));
   }
 
   signup() {
     const newUser = this.signUpForm.getRawValue() as NewUser;
     newUser.stts_id = 1;
     newUser.acc_password_was_reset = false;
-    newUser.acc_dt_birthday = this.formataStringData(newUser.acc_dt_birthday);
+    //newUser.acc_dt_birthday = this.formataStringData(newUser.acc_dt_birthday);
     console.table(newUser)
     this.signUpService
       .signUp(newUser)
