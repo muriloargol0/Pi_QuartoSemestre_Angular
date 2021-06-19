@@ -32,6 +32,10 @@ const routes: Routes = [
     component: LoanEditComponent
   },
   {
+    path: 'loan/new/:user',
+    component: LoanEditComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }

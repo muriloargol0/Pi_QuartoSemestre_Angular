@@ -1,55 +1,42 @@
 <li class="list-group-item">
     <form [formGroup]="loanForm" class="form mt-4">
-        <div class="form-row">
-                <div class="form-group" col-md-8>
+        <div class="container" style="border: 1px solid #c2c2c2;">
+            <div class="row mt-3">
+                <div class="col-md-3">
                     <label for="description">Descrição:</label>
-                    <input #loanInput 
-                    formControlName="loan_description" 
-                    class="form-control" 
-                    value="" 
-                    >  
+                    <input #loanInput formControlName="loan_description" class="form-control" value="">
                 </div>
-                <div class="form-group" col-md-2>
+                <div class="col-md-3">
                     <label for="loanDate">Data do empréstimo:</label>
-                    <input 
-                    formControlName="loan_date" 
-                    class="form-control" 
-                    value="" 
-                    >  
+                    <input formControlName="loan_date" class="form-control" value="">
                 </div>
-                <div class="form-group" col-md-2>
+                <div class="col-md-3">
                     <label for="loanReturnDate">Data de devolução:</label>
-                    <input 
-                    formControlName="loan_return_date" 
-                    class="form-control" 
-                    value="" 
-                    >  
+                    <input disabled formControlName="loan_return_date" class="form-control" value="">
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="loanToName">Emprestou para:</label>
+                    <input formControlName="loan_to_name" class="form-control" value="">
+                </div>
+                <div class="col-md-3">
+                    <label for="loanEstimatedValue">Valor estimado do empréstimo:</label>
+                    <input formControlName="loan_estimated_value" class="form-control" value="">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col-md-9">
+                    <label for="observation">Observação:</label>
+                    <textarea rows="3" formControlName="loan_observation" class="form-control" value=""></textarea>
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="ml-3">
+                    <button class="btn btn-primary mr-3" (click)="saveLoan()">Salvar</button>
+                    <button class="btn btn-danger" (click)="returnList()">Cancelar</button>
+                </div>
+            </div>
         </div>
-            <div class="form-group">
-                <label for="loanToName">Emprestou para:</label>
-                <input 
-                formControlName="loan_to_name" 
-                class="form-control" 
-                value="" 
-                >  
-            </div>
-            <div class="form-group">
-                <label for="observation">Observação:</label>
-                <textarea 
-                rows="3"
-                formControlName="loan_observation" 
-                class="form-control" 
-                value="" 
-                ></textarea>  
-            </div>
-            <div class="form-group">
-                <label for="loanEstimatedValue">Valor estimado do empréstimo:</label>
-                <input 
-                formControlName="loan_estimated_value" 
-                class="form-control" 
-                value="" 
-                >  
-            </div>
     </form>
 </li>

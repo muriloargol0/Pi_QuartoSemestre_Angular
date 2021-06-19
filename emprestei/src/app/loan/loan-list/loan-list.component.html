@@ -1,26 +1,39 @@
-<p class="text-center text-muted" *ngIf="!loansList?.length">
-    <font size="40" >
-        Desculpe, ainda não há empréstimos cadastrados para esse usuário
-    </font>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 pt-3 pb-3">
+            <button class="btn btn-success mr-3 pl-5 pr-5" (click)="newLoan()">Novo</button>
+        </div>
+        <div class="col-md-12" *ngIf="!loansList?.length">
+            <p class="text-center text-muted" >
+                <font size="40">
+                    Desculpe, ainda não há empréstimos cadastrados para esse usuário
+                </font>
+            </p>
+        </div>       
 
-<li class="list-group-item mb-1" *ngFor="let item of loansList">
-    <div class="list-group">
-        <a class="list-group-item list-group-item-action flex-column align-items-start" (click)="loanDetails(item.id)">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-4">Item: {{item.loan_description}}</h5>
-                <small>Data do empréstimo: {{formatStringDataToDisplay(item.loan_date)}}</small>
-                <small>Data de retorno: {{formatStringDataToDisplay(item.loan_return_date)}}</small>
-            </div>
-            <p class="mb-1">Emprestado para: {{item.loan_to_name}}</p>
-            <p class="mb-1">Observação: {{item.loan_observation}}</p>
-            <small>Valor Estimado: R$ {{item.loan_estimated_value}}</small>
-        </a>
-        <button *ngIf="item.loan_return_date == null || item.loan_return_date == ''"
-             name="btnDevolver" class="btn btn-primary" (click)="returnLoan(item.id)">Devolver</button>
-        <button *ngIf="item.loan_return_date != null && item.loan_return_date != ''" 
-            name="btnDesfazerDevolucao" class="btn btn-primary" (click)="undoReturnLoan(item.id)">Desfazer Devolução</button>
-    </div>  
-</li>
+        <div class="col-md-12">
+            <li class="list-group-item mb-1" *ngFor="let item of loansList">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action flex-column align-items-start" (click)="loanDetails(item.id)">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-4">Item: {{item.loan_description}}</h5>
+                            <small>Data do empréstimo: {{formatStringDataToDisplay(item.loan_date)}}</small>
+                            <small>Data de retorno: {{formatStringDataToDisplay(item.loan_return_date)}}</small>
+                        </div>
+                        <p class="mb-1">Emprestado para: {{item.loan_to_name}}</p>
+                        <p class="mb-1">Observação: {{item.loan_observation}}</p>
+                        <small>Valor Estimado: R$ {{item.loan_estimated_value}}</small>
+                    </a>
+                    <button *ngIf="item.loan_return_date == null || item.loan_return_date == ''" name="btnDevolver"
+                        class="btn btn-primary" (click)="returnLoan(item.id)">Devolver</button>
+                    <button *ngIf="item.loan_return_date != null && item.loan_return_date != ''" name="btnDesfazerDevolucao"
+                        class="btn btn-primary" (click)="undoReturnLoan(item.id)">Desfazer Devolução</button>
+                </div>
+            </li>
+        </div>
+        
+    </div>
+</div>
+
 
 

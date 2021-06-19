@@ -40,11 +40,8 @@ export class LoanListComponent implements OnInit {
     let loan = this.loansList.find(l => l.id == idLoan);
     var date = new Date();
     loan.loan_return_date = date.toISOString().split('T')[0]
-    console.log(loan.loan_return_date);
     this.loanService.returnLoan(loan).subscribe(res => {
-      console.log(res);
     }, err => {
-      console.log(err);
       alert('Não foi possível realizar a devolução!');
     });
   }
@@ -63,6 +60,11 @@ export class LoanListComponent implements OnInit {
 
   loanDetails(idLoan: number): void {
     this.router.navigate([`../loan/edit/${idLoan}`]);
+  }
+
+  newLoan() {
+    console.log("new");
+    this.router.navigate([`../loan/new/${this.idUser}`]);
   }
 
   formatStringDataToDisplay(data) {
